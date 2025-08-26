@@ -16,7 +16,9 @@ Simulation results:
          - Figure3.R
 
 Real data analysis:
-   (Provide a description of the simulated data file sample_data_to_run.csv, explain how you created the simulated data in order to make it resemble the real data (e.g., hopefully the simulated data has the same number of sites, patients, features, etc. as the real data))
+   (Provide a description of the simulated data file sample_data_to_run.csv, 
+      explain how you created the simulated data in order to make it resemble the real data 
+       (e.g., hopefully the simulated data has the same number of sites, patients, features, etc. as the real data))
 
    To run the real data use case, open the use_case file:
 
