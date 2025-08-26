@@ -1,4 +1,4 @@
-To run the simulation study:
+To run the simulation study, open the simulation_result file:
 
 1. Execute the following R scripts:
    - simulation_n500p500.R
@@ -12,3 +12,7 @@ To run the simulation study:
    - Figure1.R
    - Figure2.R
    - Figure3.R
+
+To run the real data use case, open the use_case file:
+
+
