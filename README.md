@@ -1,50 +1,76 @@
-# Documentation for "Federated Feature Selection with False Discovery Rate Control"
+# Federated Feature Selection with False Discovery Rate Control
 
-## Simulation Studies
+This repository contains code to reproduce the simulation studies and the real data analysis reported in the manuscript. All code is written in R. Results are written to `.rds` files and figures are produced from dedicated plotting scripts.
 
-###  Implementation of simulation under different settings:
+## 1. Repository layout
 
-#### Folder name: 
-- simulation_result
+### Simulation studies
+Folder: `simulation_result`
 
-#### R scripts to run:
- - simulation_n500p500.R
- - simulation_n500p1000.R
- - simulation_n1000p500.R
- - simulation_scalebility.R
+Scripts to run:
+1. `simulation_n500p500.R`
+2. `simulation_n500p1000.R`
+3. `simulation_n1000p500.R`
+4. `simulation_scalebility.R`
 
-#### Instruction for replication of simulation studies:
-1. Download the R scripts from our repo
-2. Use R or RStudio to run the R scripts
-3. Results will be automatcially saved as .rds files
-4. To generate the simulation results figures as in the manuscript, please download and run the following corresponding R scripts:
-   
-   4.1. Figure1.R
-   
-   4.2. Figure2.R
-   
-   4.3. Figure3.R
+### Real data application
+Folder: `use case`
 
+Main script:
+1. `Table1.R`
 
-## Data Application Code
+Support file loaded by the main script:
+1. `Fed_simulation_functions.R`
 
-###  Running the code on real-world data
+Sample dataset:
+1. `sample_data_to_run.csv`
 
-#### Folder name:
-- use case
+## 2. Software requirements
 
-#### R script to run:
-- use_case_implementation.R
+1. R version 4.x or later.
+2. RStudio is recommended for interactive work.
+3. Base R packages only, unless a script prompts you to install an additional package.
 
-#### R function (will be automatically loaded in the R script above):
-- Fed_simulation_functions.R
+## 3. Reproducing the simulation studies
 
-#### Sample dataset:
-- sample_data_to_run.csv
+1. Open R or RStudio.
+2. Set the working directory to the repository root.
+3. Run one or more of the simulation scripts listed above. For example:
+   ```r
+   source("simulation_result/simulation_n500p500.R")
+   source("simulation_result/simulation_n500p1000.R")
+   source("simulation_result/simulation_n1000p500.R")
+   source("simulation_result/simulation_scalebility.R")
+   ```
+4. Each script writes its outputs as `.rds` files inside `simulation_result`.
+5. To recreate the figures in the manuscript, run:
+   ```r
+   source("simulation_result/Figure1.R")
+   source("simulation_result/Figure2.R")
+   source("simulation_result/Figure3.R")
+   ```
 
-#### Instruction for replication of data application with sample dataset:
-1. Download the R scripts under use case folder
-2. Use R or RStudio to run the R script "use_case_implementation.R"
-3. To generate the ROC curve as Figure 4 in the manuscript, please download and run the following corresponding R script:
+## 4. Reproducing the real data analysis
 
-   3.1. Figure4.R
+1. Open R or RStudio.
+2. Set the working directory to the folder `use case`.
+3. Ensure the sample dataset `sample_data_to_run.csv` is present in the same folder.
+4. Run the main script:
+   ```r
+   source("use case/Table1.R")
+   ```
+   The file `Fed_simulation_functions.R` is sourced automatically by `Table1.R`.
+5. Outputs are written as `.rds` files inside `use case`.
+6. To produce the ROC figure from the manuscript, run:
+   ```r
+   source("use case/Figure4.R")
+   ```
+
+## 5. Notes on output and reproducibility
+
+1. All scripts set their own random seeds when applicable. If you require exact replication, do not modify those seeds.
+2. Figures are regenerated from the `.rds` result files. If you delete or relocate those files, recreate them by rerunning the corresponding simulation or analysis script.
+
+## 6. Support
+
+For questions about the code or the study design, please open an issue in the repository.
