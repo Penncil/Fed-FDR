@@ -1,8 +1,24 @@
-# Federated Feature Selection with False Discovery Rate Control
+# Fed-FDR: Federated Feature Selection with False Discovery Rate Control
+
+
+## Outline
+
+1. Description 
+2. Fed-FDR workflow
+3. Software requirements
+4. Reproducing the simulation studies
+5. Reproducing the real data analysis
+6. Notes on output and reproducibility
+7. Support
+
+## 1. Description
 
 This repository contains code to reproduce the simulation studies and the real data analysis reported in the manuscript. All code is written in R. Results are written to `.rds` files and figures are produced from dedicated plotting scripts.
 
-## 1. Repository layout
+## Fed-FDR Workflow
+![](Fed_FDR_workflow.png)
+
+## 2. Repository layout
 
 ### Simulation studies
 Folder: `simulation_result`
@@ -25,13 +41,13 @@ Support file loaded by the main script:
 Sample dataset:
 1. `sample_data_to_run.csv`
 
-## 2. Software requirements
+## 3. Software requirements
 
 1. R version 4.4.1 or later.
 2. RStudio is recommended for interactive work.
 3. Base R packages only, unless a script prompts you to install an additional package.
 
-## 3. Reproducing the simulation studies
+## 4. Reproducing the simulation studies
 
 1. Open R or RStudio.
 2. Set the working directory to the repository root.
@@ -50,7 +66,7 @@ Sample dataset:
    source("simulation_result/Figure3.R")
    ```
 
-## 4. Reproducing the real data analysis
+## 5. Reproducing the real data analysis
 
 1. Open R or RStudio.
 2. Set the working directory to the folder `use case`.
@@ -69,11 +85,11 @@ Sample dataset:
    
    In this repository, we include a synthetic dataset `sample_data_to_run.csv` that was generated to approximate the structure of the real-world COVID-19 pediatric dataset. The original dataset includes 3,990 patients from 34 clinical sites and 243 binary covariates, but due to privacy and data use restrictions, we cannot share the raw patient-level data. To create a reproducible example, we generated a synthetic dataset with 4,000 patients across 35 clinical sites, containing 243 binary covariates and one binary outcome. The marginal distributions and correlation structure of the features were designed to resemble those of the original dataset, ensuring that the synthetic data are representative for testing and reproducing the analysis pipeline, while containing no identifiable patient information.
 
-## 5. Notes on output and reproducibility
+## 6. Notes on output and reproducibility
 
 1. All scripts set their own random seeds when applicable. If you require exact replication, do not modify those seeds.
 2. Figures are regenerated from the `.rds` result files. If you delete or relocate those files, recreate them by rerunning the corresponding simulation or analysis script.
 
-## 6. Support
+## 7. Support
 
 For questions about the code or the study design, please open an issue in the repository.
