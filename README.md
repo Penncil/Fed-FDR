@@ -21,9 +21,14 @@ In this repository, we include a synthetic dataset `sample_data_to_run.csv` that
 ## 2. Fed-FDR Workflow
 ![](Fed_FDR_workflow.png)
 
-In the first stage, each site $k \in {1, \ldots, K}$ fits a GLM-Lasso to obtain its support $\widehat{S}^{(k)}$, which is then shared with all other sites. Next, each site fits a refined de-sparsified Lasso using the aggregated support $\widehat{S}^{(-k)} = \bigcup_{j \neq k} \widehat{S}^{(j)}$, and transfers the resulting estimator $\widehat{\beta}_{\widehat{S}^{(-k)}}$ to the central site. In the second stage, the central site constructs mirror statistics to select the final support while controlling the FDR.
+1. **Stage I:**
+   - Each collaborating site \(k \in \{1, \ldots, K\}\) fits a GLM–Lasso to obtain its support \(\hat{S}^{(k)}\), which is then shared with all other sites.  
+   - Each collaborating site fits a refined de-sparsified Lasso using the aggregated support \(\hat{S}^{(-k)} = \bigcup_{j \neq k} \hat{S}^{(j)}\).  
+   - Each collaborating site transfers the resulting estimator \(\hat{\beta}_{\hat{S}^{(-k)}}\) to the central site.  
 
-[Privacy-Preserving Distributed Algorithms (PDA)](https://pdamethods.org/) is a framework of statistical and machine learning methods that enables secure analysis across multiple institutions without sharing individual patient data (IPD). In this document, we use PDA to refer to the central site.
+2. **Stage II:**
+   - The central site constructs mirror statistics to select the final support while controlling the FDR.
+   - NOTE: [Privacy-Preserving Distributed Algorithms (PDA)](https://pdamethods.org/) is a framework of statistical and machine learning methods that enables secure analysis across multiple institutions without sharing individual patient data (IPD). In this document, we use PDA to refer to the central site.
 
 ## 3. Repository layout
 
