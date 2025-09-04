@@ -5,22 +5,25 @@
 
 1. Description 
 2. Fed-FDR workflow
-3. Software requirements
-4. Reproducing the simulation studies
-5. Reproducing the real data analysis
-6. Notes on output and reproducibility
-7. Support
+3. Repository layout
+4. Software requirements
+5. Reproducing the simulation studies
+6. Reproducing the real data analysis
+7. Notes on output and reproducibility
+8. Support
 
 ## 1. Description
 
 This repository contains code to reproduce the simulation studies and the real data analysis reported in the manuscript. All code is written in R. Results are written to `.rds` files and figures are produced from dedicated plotting scripts.
 
-## Fed-FDR Workflow
+In this repository, we include a synthetic dataset `sample_data_to_run.csv` that was generated to approximate the structure of the real-world COVID-19 pediatric dataset. The original dataset includes 3,990 patients from 34 clinical sites and 243 binary covariates, but due to privacy and data use restrictions, we cannot share the raw patient-level data. To create a reproducible example, we generated a synthetic dataset with 4,000 patients across 35 clinical sites, containing 243 binary covariates and one binary outcome. The marginal distributions and correlation structure of the features were designed to resemble those of the original dataset, ensuring that the synthetic data are representative for testing and reproducing the analysis pipeline, while containing no identifiable patient information.
+
+## 2. Fed-FDR Workflow
 ![](Fed_FDR_workflow.png)
 
-In the first stage, each site $k \in {1, \ldots, K}$ fits a GLM-Lasso to obtain its support $\widehat{S}^{(k)}$, which is then shared with all other sites. Next, each site fits a refined de-sparsified Lasso using the aggregated support $\widehat{S}^{(-k)} = \bigcup_{j \neq k} \widehat{S}^{(j)}$, and transfers the resulting estimator $\widehat{\bm{\beta}}_{\widehat{S}^{(-k)}}$ to the central site. In the second stage, the central site constructs mirror statistics to select the final support while controlling the FDR.
+In the first stage, each site $k \in {1, \ldots, K}$ fits a GLM-Lasso to obtain its support $\widehat{S}^{(k)}$, which is then shared with all other sites. Next, each site fits a refined de-sparsified Lasso using the aggregated support $\widehat{S}^{(-k)} = \bigcup_{j \neq k} \widehat{S}^{(j)}$, and transfers the resulting estimator $\widehat{\beta}_{\widehat{S}^{(-k)}}$ to the central site. In the second stage, the central site constructs mirror statistics to select the final support while controlling the FDR.
 
-## 2. Repository layout
+## 3. Repository layout
 
 ### Simulation studies
 Folder: `simulation_result`
@@ -43,13 +46,13 @@ Support file loaded by the main script:
 Sample dataset:
 1. `sample_data_to_run.csv`
 
-## 3. Software requirements
+## 4. Software requirements
 
 1. R version 4.4.1 or later.
 2. RStudio is recommended for interactive work.
 3. Base R packages only, unless a script prompts you to install an additional package.
 
-## 4. Reproducing the simulation studies
+## 5. Reproducing the simulation studies
 
 1. Open R or RStudio.
 2. Set the working directory to the repository root.
@@ -68,7 +71,7 @@ Sample dataset:
    source("simulation_result/Figure3.R")
    ```
 
-## 5. Reproducing the real data analysis
+## 6. Reproducing the real data analysis
 
 1. Open R or RStudio.
 2. Set the working directory to the folder `use case`.
@@ -83,15 +86,14 @@ Sample dataset:
    ```r
    source("use case/Figure4.R")
    ```
-7. Note on generation of synthetic real data for replication:
    
-   In this repository, we include a synthetic dataset `sample_data_to_run.csv` that was generated to approximate the structure of the real-world COVID-19 pediatric dataset. The original dataset includes 3,990 patients from 34 clinical sites and 243 binary covariates, but due to privacy and data use restrictions, we cannot share the raw patient-level data. To create a reproducible example, we generated a synthetic dataset with 4,000 patients across 35 clinical sites, containing 243 binary covariates and one binary outcome. The marginal distributions and correlation structure of the features were designed to resemble those of the original dataset, ensuring that the synthetic data are representative for testing and reproducing the analysis pipeline, while containing no identifiable patient information.
+   
 
-## 6. Notes on output and reproducibility
+## 7. Notes on output and reproducibility
 
 1. All scripts set their own random seeds when applicable. If you require exact replication, do not modify those seeds.
 2. Figures are regenerated from the `.rds` result files. If you delete or relocate those files, recreate them by rerunning the corresponding simulation or analysis script.
 
-## 7. Support
+## 8. Support
 
 For questions about the code or the study design, please open an issue in the repository.
