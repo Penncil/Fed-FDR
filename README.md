@@ -22,9 +22,9 @@ In this repository, we include a synthetic dataset `sample_data_to_run.csv` that
 ![](Fed_FDR_workflow.png)
 
 1. **Stage I:**
-   - Each collaborating site \(k \in \{1, \ldots, K\}\) fits a GLM–Lasso to obtain its support \(\hat{S}^{(k)}\), which is then shared with all other sites.  
-   - Each collaborating site fits a refined de-sparsified Lasso using the aggregated support \(\hat{S}^{(-k)} = \bigcup_{j \neq k} \hat{S}^{(j)}\).  
-   - Each collaborating site transfers the resulting estimator \(\hat{\beta}_{\hat{S}^{(-k)}}\) to the central site.  
+   - Each collaborating site $k \in \{1, \ldots, K\}$ fits a GLM–Lasso to obtain its support $\hat{S}^{(k)}$, which is then shared with all other sites.  
+   - Each collaborating site fits a refined de-sparsified Lasso using the aggregated support $\hat{S}^{(-k)} = \bigcup_{j \neq k} \hat{S}^{(j)}$.  
+   - Each collaborating site transfers the resulting estimator $\hat{\beta}_{\hat{S}^{(-k)}}$ to the central site.  
 
 2. **Stage II:**
    - The central site constructs mirror statistics to select the final support while controlling the FDR.
