@@ -23,6 +23,8 @@ In this repository, we include a synthetic dataset `sample_data_to_run.csv` that
 
 In the first stage, each site $k \in {1, \ldots, K}$ fits a GLM-Lasso to obtain its support $\widehat{S}^{(k)}$, which is then shared with all other sites. Next, each site fits a refined de-sparsified Lasso using the aggregated support $\widehat{S}^{(-k)} = \bigcup_{j \neq k} \widehat{S}^{(j)}$, and transfers the resulting estimator $\widehat{\beta}_{\widehat{S}^{(-k)}}$ to the central site. In the second stage, the central site constructs mirror statistics to select the final support while controlling the FDR.
 
+[Privacy-Preserving Distributed Algorithms (PDA)](https://pdamethods.org/) is a framework of statistical and machine learning methods that enables secure analysis across multiple institutions without sharing individual patient data (IPD). In this document, we use PDA to refer to the central site.
+
 ## 3. Repository layout
 
 ### Simulation studies
