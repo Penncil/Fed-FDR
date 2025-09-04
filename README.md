@@ -18,6 +18,8 @@ This repository contains code to reproduce the simulation studies and the real d
 ## Fed-FDR Workflow
 ![](Fed_FDR_workflow.png)
 
+In the first stage, each site $k \in {1, \ldots, K}$ fits a GLM-Lasso to obtain its support $\widehat{S}^{(k)}$, which is then shared with all other sites. Next, each site fits a refined de-sparsified Lasso using the aggregated support $\widehat{S}^{(-k)} = \bigcup_{j \neq k} \widehat{S}^{(j)}$, and transfers the resulting estimator $\widehat{\bm{\beta}}_{\widehat{S}^{(-k)}}$ to the central site. In the second stage, the central site constructs mirror statistics to select the final support while controlling the FDR.
+
 ## 2. Repository layout
 
 ### Simulation studies
